@@ -10,7 +10,8 @@ constructor(){
               title: 'hats',
               imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
               id: 1,
-              linkUrl: 'shop/hats'
+              linkUrl: 'shop/hats',
+
             },
             {
               title: 'jackets',
@@ -46,8 +47,8 @@ render(){
         <div className="directory-menu">
         {
             this.state.sections.map(
-                ({title,imageUrl,id,size})=>
-                <MenuItem size={size} imageUrl={imageUrl} key={id} title={title}/>
+                ({id,...otherSectionProps})=>
+                <MenuItem  key={id} {...otherSectionProps}/>
 
             )
         }

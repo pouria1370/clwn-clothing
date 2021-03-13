@@ -4,9 +4,11 @@ import './homepage.styles.scss'
 import DirectoryMneu from '../../components/directory-menu-component/directory-component'
 
 
-const HomePage = () => (
-  <div className="homepage">
+
+const HomePage = (props) => {
+  console.log(props)
+  return(<div className="homepage">
     <DirectoryMneu /> 
-  </div>
-);
+  </div>)
+};
 export default HomePage;
