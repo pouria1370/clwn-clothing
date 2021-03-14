@@ -12,7 +12,7 @@ export default class SHOPPAGE extends Component {
         const {collection}=this.state;
         return (
             <div className="shop-page">
-            {collection.filter(index=>index.id<2).map(({id,...otherProps})=>(
+            {collection.map(({id,...otherProps})=>(
                 <CollectionPreview  key={id} {...otherProps} />
             ))
         }
