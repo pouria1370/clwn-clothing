@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 body{
-    font-family: 'open Sans Condensed';
+    font-family: 'Syne Mono', monospace,'Inter','open Sans Condensed';
     padding: 20px 60px;
 }
 a{
     text-decoration: none;
     color: black;
+}
+*{
+    box-sizing: border-box;
 }
