@@ -4,7 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import SHOPPAGE from "./pages/shop/shop.component.jsx";
 import Header from "./components/header.component/header.component.jsx";
 import SignInAndSignupPage from "./pages/sign-in and sign-up page/sign-in and sign-up page.jsx";
-import { auth } from "../src/components/firbase/firebase.utility";
+import {
+  createUserProfileDocument,
+  auth,
+} from "../src/components/firbase/firebase.utility";
 import React from "react";
 
 class App extends React.Component {
@@ -14,14 +17,26 @@ class App extends React.Component {
       userAuthenticated: "",
     };
   }
-  unsuscribeFromAuth=null;
+  unsuscribeFromAuth = null;
   componentDidMount() {
-    this.unsuscribeFromAuth=auth.onAuthStateChanged((user) => {
-      this.setState({ userAuthenticated: user });
-      console.log(user);
+    this.unsuscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          this.setState({
+            userAuthenticated: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      } 
+      else {
+        this.setState({ userAuthenticated: userAuth });
+      }
     });
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unsuscribeFromAuth();
   }
 
