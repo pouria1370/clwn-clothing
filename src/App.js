@@ -7,7 +7,7 @@ import SignInAndSignupPage from "./pages/sign-in and sign-up page/sign-in and si
 import {
   createUserProfileDocument,
   auth,
-  signInWithGoogle,
+  
 } from "../src/components/firbase/firebase.utility";
 import React from "react";
 import { connect } from "react-redux";
