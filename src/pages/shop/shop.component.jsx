@@ -13,7 +13,7 @@ export default class SHOPPAGE extends Component {
         return (
             <div className="shop-page">
             {collection.map(({id,...otherProps})=>(
-                <CollectionPreview  key={id} {...otherProps} />
+                <CollectionPreview  key={id}  {...otherProps} />
             ))
         }
             </div>
