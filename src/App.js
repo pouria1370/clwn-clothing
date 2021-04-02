@@ -12,6 +12,9 @@ import {
 import React from "react";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user-actions";
+import {createStructuredSelector} from 'reselect'
+import {currentUserSelector} from './redux/user/user.selector'
+import CheckOut from './pages/checkout/chekout.component'
 
 class App extends React.Component {
   unsuscribeFromAuth = null;
@@ -54,14 +57,15 @@ class App extends React.Component {
               )
             }
           />
+          <Route component={CheckOut} exact path="/checkout"/>
         </Switch>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector ({
+  currentUser: currentUserSelector,
 });
 
 const mapDispatchToProps = (dispatch) => ({
