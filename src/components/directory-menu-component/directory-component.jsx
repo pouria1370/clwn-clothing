@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./directory-component-style.scss";
 import {createStructuredSelector} from 'reselect'
 import {connect} from 'react-redux'
