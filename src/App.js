@@ -7,14 +7,13 @@ import SignInAndSignupPage from "./pages/sign-in and sign-up page/sign-in and si
 import {
   createUserProfileDocument,
   auth,
-  
 } from "../src/components/firbase/firebase.utility";
 import React from "react";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user-actions";
-import {createStructuredSelector} from 'reselect'
-import {currentUserSelector} from './redux/user/user.selector'
-import CheckOut from './pages/checkout/chekout.component'
+import { createStructuredSelector } from "reselect";
+import { currentUserSelector } from "./redux/user/user.selector";
+import CheckOut from "./pages/checkout/chekout.component";
 
 class App extends React.Component {
   unsuscribeFromAuth = null;
@@ -45,26 +44,26 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route component={HomePage} exact path="/" />
-          <Route component={SHOPPAGE} exact path="/shop" />
+          <Route component={SHOPPAGE}   path="/shop" />
           <Route
             exact
             path="/signIn"
             render={() =>
-              (this.props.currentUser) ? (
+              this.props.currentUser ? (
                 <Redirect exact to="/" />
               ) : (
-                <SignInAndSignupPage/>
+                <SignInAndSignupPage />
               )
             }
           />
-          <Route component={CheckOut} exact path="/checkout"/>
+          <Route component={CheckOut} exact path="/checkout" />
         </Switch>
       </div>
     );
   }
 }
 
-const mapStateToProps = createStructuredSelector ({
+const mapStateToProps = createStructuredSelector({
   currentUser: currentUserSelector,
 });
 

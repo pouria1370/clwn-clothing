@@ -19,12 +19,7 @@ export const quantitySelector = createSelector(
     )
   
 );
-// export const removeItemFromCart = createSelector(
-//   [selectCartItems],
-//    (cartItems) => 
-//    cartItems.filter(item=>item.id!==cartItemToRemove.id)
-  
-// );
+
 export const totalPrice = createSelector(
   [selectCartItems],
    (cartItems) => 
