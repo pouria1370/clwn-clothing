@@ -7,6 +7,7 @@ import SignInAndSignupPage from "./pages/sign-in and sign-up page/sign-in and si
 import {
   createUserProfileDocument,
   auth,
+  
 } from "../src/components/firbase/firebase.utility";
 import React from "react";
 import { connect } from "react-redux";
@@ -14,12 +15,12 @@ import { setCurrentUser } from "./redux/user/user-actions";
 import { createStructuredSelector } from "reselect";
 import { currentUserSelector } from "./redux/user/user.selector";
 import CheckOut from "./pages/checkout/chekout.component";
+import { selsctCollectionsPreview } from "./redux/Shop/shop.selector";
 
 class App extends React.Component {
   unsuscribeFromAuth = null;
   componentDidMount() {
     const { setCurrentUser } = this.props;
-
     this.unsuscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -31,7 +32,9 @@ class App extends React.Component {
         });
       } else {
         setCurrentUser(userAuth);
+       
       }
+     
     });
   }
   componentWillUnmount() {
@@ -44,7 +47,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route component={HomePage} exact path="/" />
-          <Route component={SHOPPAGE}   path="/shop" />
+          <Route component={SHOPPAGE} path="/shop" />
           <Route
             exact
             path="/signIn"

@@ -9,9 +9,9 @@ export default shopSelector;
 export const selectCollection = (collectionUrlParam) =>
   createSelector(
     [shopSelector],
-    (collection) => collection[collectionUrlParam]
+    (collection) => collection?collection[collectionUrlParam]:null
   );
 export const selsctCollectionsPreview=createSelector(
     [shopSelector],
-    collection=>Object.keys(collection).map(key=>collection[key])
-)
+    collection=>collection?Object.keys(collection).map(key=>collection[key]):[]
+)  
